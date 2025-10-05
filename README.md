@@ -24,7 +24,7 @@ A sleek, modern photo gallery application built with Angular, featuring category
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/nishant/modern-photo-gallery.git
 ```
 
 2. Install dependencies:
