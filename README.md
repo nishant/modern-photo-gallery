@@ -1,59 +1,81 @@
-# PhotoAlbum
+# Modern Photo Gallery
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+A sleek, modern photo gallery application built with Angular, featuring category-based navigation and a responsive design.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 🌙 Modern dark theme with sleek UI elements
+- 📂 Category-based photo organization
+- 📱 Fully responsive grid layout
+- ✨ Smooth animations and hover effects
+- 🖼️ Image descriptions and metadata
+- 📺 Fullscreen image viewing capability
+- 🎨 Beautiful gradient overlays and transitions
 
+## Technology Stack
+
+- Angular 17+
+- SCSS for styling
+- Bootstrap for grid and components
+- FontAwesome icons
+- ngx-lightbox for fullscreen viewing
+
+## Getting Started
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Navigate to `http://localhost:4200` in your browser
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── category/    # Category view component
+│   │   ├── gallery/     # Main gallery component
+│   │   └── navbar/      # Navigation component
+│   ├── models/
+│   │   └── photo.model.ts
+│   └── services/
+│       └── photo.ts     # Photo data service
+└── assets/
+    └── images/          # Categorized images
+        ├── nature/
+        ├── architecture/
+        ├── portraits/
+        └── travel/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Adding New Photos
 
-```bash
-ng generate --help
-```
+Place your photos in the appropriate category folder under `src/assets/images/`. The following categories are available:
+- nature/
+- architecture/
+- portraits/
+- travel/
 
-## Building
+## Features in Detail
 
-To build the project run:
+- **Category Navigation**: Easy browsing through different photo categories via the navbar
+- **Responsive Design**: Adapts seamlessly to different screen sizes
+- **Image Descriptions**: Hover over images to view detailed descriptions
+- **Fullscreen View**: Click the expand icon in category view for fullscreen image viewing
+- **Modern Animations**: Smooth transitions and hover effects throughout the application
 
-```bash
-ng build
-```
+## License
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT License - Feel free to use this project for your own purposes.
