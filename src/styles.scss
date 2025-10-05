@@ -1,1 +1,161 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Import Bootstrap with dark theme */
+@use 'bootstrap/scss/bootstrap' as *;
+@use '@fortawesome/fontawesome-free/css/all.css' as *;
+
+/* Modern Dark Theme Variables */
+:root {
+  --primary-color: #7289da;
+  --secondary-color: #2c2f33;
+  --background-color: #1a1b1e;
+  --surface-color: #23272a;
+  --text-color: #ffffff;
+  --text-muted: #99aab5;
+  --accent-color: #5865f2;
+  --card-hover-transform: translateY(-8px);
+  --transition-speed: 0.3s;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+  &:hover {
+    background: var(--accent-color);
+  }
+}
+
+/* Modern Card Styles */
+.card {
+  background: var(--surface-color);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+
+  &:hover {
+    transform: var(--card-hover-transform);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-body {
+    background: var(--surface-color);
+    color: var(--text-color);
+    padding: 1rem;
+  }
+
+  .card-title {
+    color: var(--text-color);
+    font-weight: 600;
+  }
+}
+
+/* Modern Container Styles */
+.container {
+  padding: 2rem 1rem;
+  max-width: 1400px;
+}
+
+/* Category Title Styles */
+.category-title {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    border-radius: 2px;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--surface-color) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+
+  .navbar-brand {
+    color: var(--text-color) !important;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--text-muted) !important;
+    transition: color var(--transition-speed) ease;
+
+    &:hover, &.active {
+      color: var(--text-color) !important;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+    .dropdown-item {
+      color: var(--text-muted);
+
+      &:hover {
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Typography */
+html {
+  font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
