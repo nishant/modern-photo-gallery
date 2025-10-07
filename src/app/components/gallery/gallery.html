@@ -1,14 +1,19 @@
 <div class="container">
+  <div class="gallery-header">
+    <h2>Categories</h2>
+    <p>Explore my photography collection by category</p>
+  </div>
+
   <div class="photo-grid fade-in">
-    <div class="photo-item" *ngFor="let photo of photos; let i = index" (click)="navigateToCategory(photo.category)">
-      <div class="card">
+    <div class="photo-item" *ngFor="let item of categoryPreviews; let i = index" (click)="navigateToCategory(item.category)">
+      <div class="card category-card">
         <div class="card-img-wrapper">
-          <img [src]="photo.url" [alt]="photo.title" class="card-img-top">
+          <img [src]="item.photo.url" [alt]="item.photo.title" class="card-img-top">
           <div class="card-overlay">
-            <span class="category-badge">{{photo.category | titlecase}}</span>
+            <span class="category-badge">{{item.category | titlecase}}</span>
             <div class="overlay-content">
-              <h5>{{photo.title}}</h5>
-              <p *ngIf="photo.description">{{photo.description}}</p>
+              <h5>{{item.category | titlecase}}</h5>
+              <p>View all photos in this category</p>
             </div>
           </div>
         </div>
@@ -16,3 +21,10 @@
     </div>
   </div>
 </div>
+
+<app-fullscreen-gallery
+  *ngIf="showLightbox"
+  [photos]="photos"
+  [currentIndex]="selectedIndex"
+  (close)="closeLightbox()">
+</app-fullscreen-gallery>

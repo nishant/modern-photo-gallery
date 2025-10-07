@@ -1,0 +1,20 @@
+<div class="fullscreen-gallery" (click)="closeLightbox()">
+  <button class="close-button" (click)="closeLightbox()">&times;</button>
+  <button class="nav-button prev" (click)="prevPhoto(); $event.stopPropagation()">
+    &#8592;
+  </button>
+  <button class="nav-button next" (click)="nextPhoto(); $event.stopPropagation()">
+    &#8594;
+  </button>
+
+  <div class="content-wrapper" (click)="$event.stopPropagation()">
+    <div class="image-container">
+      <img [src]="photos[currentIndex]?.url" [alt]="photos[currentIndex]?.title">
+    </div>
+    <div class="image-info">
+      <h3 class="lightbox-title">{{photos[currentIndex]?.title}}</h3>
+      <p *ngIf="photos[currentIndex]?.description">{{photos[currentIndex]?.description}}</p>
+      <span class="counter">{{currentIndex + 1}} / {{photos.length}}</span>
+    </div>
+  </div>
+</div>

@@ -7,10 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All Photos</a>
+          <a class="nav-link" routerLink="/all-photos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">All Photos</a>
         </li>
         <li class="nav-item dropdown" ngbDropdown>
-          <a class="nav-link dropdown-toggle" ngbDropdownToggle>Categories</a>
+          <a class="nav-link dropdown-toggle shimmer-toggle" ngbDropdownToggle>
+            <span>Categories</span>
+          </a>
           <div class="dropdown-menu" ngbDropdownMenu>
             <a class="dropdown-item" *ngFor="let category of categories" [routerLink]="['/category', category]">
               {{category | titlecase}}
@@ -21,4 +23,3 @@
     </div>
   </div>
 </nav>
-

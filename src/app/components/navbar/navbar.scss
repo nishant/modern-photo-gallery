@@ -1,0 +1,97 @@
+/* Add shimmer animation keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.navbar {
+  min-height: 48px;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background: rgba(30, 30, 40, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  border-radius: 0 0 18px 18px;
+  z-index: 1100;
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.2px; /* Reduced from 1px to make text more natural */
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: inherit; /* Use the same font as the rest of the page */
+  position: relative; /* For the underline positioning */
+  padding-bottom: 5px; /* Space for the underline */
+  transition: all 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease-out;
+  }
+
+  &:hover {
+    background: linear-gradient(90deg,
+      rgba(255,255,255,1) 0%,
+      var(--accent-color, #3b82f6) 50%,
+      rgba(255,255,255,1) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    animation: shimmer 2s linear infinite;
+
+    &::after {
+      background: linear-gradient(90deg,
+        var(--accent-color, #3b82f6) 0%,
+        rgba(255,255,255,0.8) 50%,
+        var(--accent-color, #3b82f6) 100%
+      );
+      background-size: 200% auto;
+      animation: shimmer 2s linear infinite;
+    }
+  }
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #eee !important;
+  margin-right: 1rem;
+  transition: all 0.3s;
+
+  &.active {
+    color: var(--accent-color, #3b82f6) !important;
+  }
+
+  &:hover {
+    color: transparent !important;
+    background: linear-gradient(90deg,
+      rgba(255,255,255,0.8) 0%,
+      var(--accent-color, #3b82f6) 50%,
+      rgba(255,255,255,0.8) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 2s linear infinite;
+  }
+}
+
+.dropdown-menu {
+  background: rgba(40, 40, 60, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  z-index: 1200;
+}

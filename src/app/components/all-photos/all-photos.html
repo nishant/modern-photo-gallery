@@ -1,0 +1,38 @@
+<div class="all-photos-container">
+  <h1 class="page-title">All Photos</h1>
+
+  <div *ngIf="loading" class="loading-indicator">
+    Loading photos...
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="photo-count">
+    Showing {{ photos.length }} photos
+  </div>
+
+  <div class="photo-grid" *ngIf="!loading && photos.length > 0">
+    <div class="photo-card" *ngFor="let photo of photos; let i = index" (click)="openLightbox(i)">
+      <div class="photo-card-inner">
+        <img [src]="photo.url" [alt]="photo.title">
+        <div class="photo-info">
+          <h3>{{photo.title}}</h3>
+          <span class="category-tag">{{photo.category | titlecase}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && photos.length === 0" class="no-photos">
+    No photos found.
+  </div>
+</div>
+
+<app-fullscreen-gallery
+  *ngIf="showLightbox"
+  [photos]="photos"
+  [currentIndex]="selectedPhotoIndex"
+  (close)="closeLightbox()">
+</app-fullscreen-gallery>

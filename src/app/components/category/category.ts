@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PhotoService } from '../../services/photo';
 import { Photo } from '../../models/photo.model';
+import { FullscreenGalleryComponent } from '../fullscreen-gallery/fullscreen-gallery';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.html',
   styleUrls: ['./category.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, FullscreenGalleryComponent]
 })
 export class CategoryComponent implements OnInit {
   photos: Photo[] = [];
   category: string = '';
+  showLightbox = false;
+  selectedIndex = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,10 +36,13 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  openFullscreen(img: HTMLImageElement) {
-    if (img.requestFullscreen) {
-      img.requestFullscreen();
-    }
+  openLightbox(index: number): void {
+    this.selectedIndex = index;
+    this.showLightbox = true;
+  }
+
+  closeLightbox(): void {
+    this.showLightbox = false;
   }
 
   getCategoryEmoji(category: string): string {

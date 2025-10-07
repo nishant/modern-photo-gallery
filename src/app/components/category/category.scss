@@ -13,6 +13,13 @@
       padding: 1rem;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      text-decoration: none; // Remove underline from emoji
+
+      &,
+      * {
+        text-decoration: none !important;
+        border-bottom: none !important;
+      }
     }
   }
 }
@@ -20,7 +27,7 @@
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 0.5rem;
   min-height: calc(100vh - 300px);
 }
@@ -140,4 +147,11 @@
       }
     }
   }
+}
+
+h1.category-title::after {
+  content: none !important;
+  display: none !important;
+  border-bottom: none !important;
+  background: none !important;
 }

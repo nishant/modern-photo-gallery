@@ -7,21 +7,19 @@
   </div>
 
   <div class="photo-grid fade-in">
-    <div class="photo-item" *ngFor="let photo of photos; let i = index">
+    <div class="photo-item" *ngFor="let photo of photos; let i = index" (click)="openLightbox(i)">
       <div class="card">
         <div class="card-img-wrapper">
-          <img #photoImg [src]="photo.url" [alt]="photo.title" class="card-img-top">
+          <img [src]="photo.url" [alt]="photo.title">
           <div class="card-overlay">
             <div class="overlay-content">
               <h5>{{photo.title}}</h5>
               <p *ngIf="photo.description">{{photo.description}}</p>
-              <div class="overlay-icons">
-                <i class="fas fa-expand" (click)="openFullscreen(photoImg)" title="View fullscreen"></i>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <app-fullscreen-gallery *ngIf="showLightbox" [photos]="photos" [currentIndex]="selectedIndex" (close)="closeLightbox()"></app-fullscreen-gallery>
 </div>

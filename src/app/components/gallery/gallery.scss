@@ -1,11 +1,35 @@
 @use 'bootstrap/scss/bootstrap' as *;
 @use '../../../styles.scss' as *;
 
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    color: var(--accent-color, #3b82f6);
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  padding: 0.5rem;
+  gap: 2rem;
+  padding: 1rem;
   min-height: calc(100vh - 150px);
 
   // Adjusted for modern look
@@ -17,16 +41,26 @@
 
 .photo-item {
   aspect-ratio: 3/4;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.04);
+    z-index: 2;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
     cursor: pointer;
   }
 
   .card {
     height: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(2px);
+    transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: box-shadow;
 
     .card-img-wrapper {
       position: relative;
@@ -37,25 +71,30 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
+        border-radius: 16px;
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, filter;
       }
 
       .card-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.4) 50%,
-            rgba(0, 0, 0, 0.2) 100%
+            120deg,
+            rgba(30, 30, 40, 0.85) 60%,
+            rgba(80, 80, 120, 0.25) 100%
           );
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 1rem;
+        align-items: flex-start;
+        padding: 1.2rem;
         color: white;
+        border-radius: 16px;
 
         .category-badge {
           align-self: flex-start;
@@ -65,41 +104,32 @@
           font-size: 0.8rem;
           font-weight: 600;
           text-transform: uppercase;
-          letter-spacing: 0.5px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+          margin-bottom: 1rem; // Increased margin-bottom
         }
 
         .overlay-content {
           text-align: center;
           transform: translateY(20px);
-          transition: transform 0.3s ease;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
+          margin-top: 0.5rem; // Added margin-top
 
           h5 {
             margin: 0;
             font-size: 1.2rem;
             font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+            margin-bottom: 1rem; // Add extra space below the title
           }
 
           p {
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-            opacity: 0.9;
-          }
-
-          .overlay-icons {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-
-            i {
-              font-size: 1.2rem;
-              cursor: pointer;
-              transition: transform 0.2s ease;
-
-              &:hover {
-                transform: scale(1.2);
-              }
-            }
+            font-size: 0.95rem;
+            opacity: 0.92;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: #e0e0e0;
           }
         }
       }
@@ -108,7 +138,8 @@
     &:hover {
       .card-img-wrapper {
         img {
-          transform: scale(1.1);
+          transform: scale(1.05);
+          filter: brightness(0.92);
         }
 
         .card-overlay {
